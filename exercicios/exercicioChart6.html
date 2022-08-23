@@ -32,82 +32,11 @@
     <h2>Exercicio 2: Gráfico de Linhas</h2> 
     <h1>Preço do café por cidade nos ultimos 4 anos</h1> 
     <div class="graf2">
-        <canvas id="meuGraficoDeBarras"></canvas>
+        <canvas id="meuGrafico2"></canvas>
     </div>
     
     <script>
-        
-        
-        //vamos criar um gráfico de barras verticais
-        //cada barra terá um rótulo (na horizontal) que será: 1º ano, 2º ano, etc.
-        //e uma barra (na vertical), que representa um valor
-        
-        const ctx = document.getElementById('meuGraficoDeBarras').getContext('2d');
-
-        const meuGraficoDeBarras = new Chart(ctx, {
-            type: 'bar', //tipo do gráfico = barras
-            data: {
-               
-                datasets: [
-
-                {
-                    label: 'Bagé',
-                    data: [{x:'1º Ano', y:4.50}],
-                    backgroundColor: [  //cor de fundo  
-                        'rgba(54, 162, 235, 0.2)', //azul claro 
-                        'rgba(54, 162, 235, 0.2)', //azul claro
-                        'rgba(54, 162, 235, 0.2)', //azul claro
-                        'rgba(54, 162, 235, 0.2)'  //azul claro
-                    ],
-                    borderColor: [  //cor de borda  
-                        'rgba(154, 162, 235, 1)', //azul mais escuro   
-                        'rgba(154, 162, 235, 1)', //azul mais escuro  
-                        'rgba(154, 162, 235, 1)', //azul mais escuro  
-                        'rgba(154, 162, 235, 1)'  //azul mais escuro  
-                    ],
-                    borderWidth: 1  //espessura da borda
-                },
-                    
-                {
-                    label: 'Pelotas',
-                    data: [{x:'1º Ano', y:4.90}],
-                    backgroundColor: [  //cor de fundo  
-                        'pink' //vermelho claro
-                    ],
-                    borderColor: [  //cor de borda  
-                        'black'
-                    ],
-                    borderWidth: 1  //espessura da borda
-                },
-
-                {
-                    label: 'Porto Alegre',
-                    data: [{x:'1º Ano', y:3.90}],
-                    backgroundColor: [  //cor de fundo  
-                        'yellow'
-                    ],
-                    borderColor: [  //cor de borda  
-                        'red'
-                    ],
-                    borderWidth: 1  //espessura da borda
-                }
-            
-
-            
-            ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-                
-            }
-        });
-
-
-
+          
         //vamos criar um gráfico de linhas
         //cada linha terá um rótulo (na horizontal) que é o nome do mês (Jan, Fev, Mar,...)
         //e o valor de um ponto (na vertical)
@@ -142,6 +71,60 @@
             }
         );
         
+        
+        //vamos criar um gráfico de linhas
+        //cada linha terá um rótulo (na horizontal) que é o nome do mês (Jan, Fev, Mar,...)
+        //e o valor de um ponto (na vertical)
+        //o framework Chart liga os pontos através de linhas, fomando o gráfico
+
+        const meusDados2 = {
+          datasets: [
+          
+          //dados da 1a linha
+          {
+            label: 'Café Bagé',             //título da linha
+            backgroundColor: 'green',  //cor dos pontos
+            borderColor: 'black',         //cor da borda dos pontos e da linha
+            data: [{x:'2019', y:2.50}, 
+                   {x:'2020', y:2.70}, 
+                   {x:'2021', y:2.85}, 
+                   {x:'2022', y:3.50}
+          ]
+          },
+          {
+            label: 'Café Pelotas',             //título da linha
+            backgroundColor: 'red',  //cor dos pontos
+            borderColor: 'blue',         //cor da borda dos pontos e da linha
+            data: [{x:'2019', y:2.50}, 
+                   {x:'2020', y:3.70}, 
+                   {x:'2021', y:4.85}, 
+                   {x:'2022', y:5.50}
+          ]
+          },
+          {
+            label: 'Café Porto Alegre',             //título da linha
+            backgroundColor: 'purple',  //cor dos pontos
+            borderColor: 'pink',         //cor da borda dos pontos e da linha
+            data: [{x:'2019', y:9.50}, 
+                   {x:'2020', y:1.70}, 
+                   {x:'2021', y:8.85}, 
+                   {x:'2022', y:10.50}
+          ]
+          }
+        ]
+        };
+      
+        //new Chart = cria um novo gráfico, 
+        //adicionado ao elemento canvas de id=meuGrafico
+        //e com os dados do objeto meusDados  
+        const myChart2 = new Chart(
+            document.getElementById('meuGrafico2'),
+            {
+              type: 'line',      //tipo = gráfico de linhas  
+              data: meusDados2,   //dados do objeto meusDados 
+              options: {}
+            }
+        );
     </script>
 
 </body>

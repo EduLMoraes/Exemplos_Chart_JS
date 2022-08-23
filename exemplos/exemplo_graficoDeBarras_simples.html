@@ -1,0 +1,62 @@
+<html> 
+    <head> 
+        <title>Exemplo 1</title>
+        <!--<script src="node_modules/chart.js/dist/chart.js"></script> -->
+
+        <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </head> 
+    <body> 
+        <h2>Exemplo 3: Gráfico de Barras <u>Simples</u></h2> 
+        <h1> Quantidade de Alunos por Ano</h1> 
+        
+        <!--cria um elemento canvas onde entra o gráfico, 
+            com id=meuGrafico-->        
+        <canvas id="meuGraficoDeBarras" width="100" height="100"></canvas>
+
+
+        
+        <script>
+
+            //vamos criar um gráfico de barras verticais
+            //cada barra terá um rótulo (na horizontal) que será: 1º ano, 2º ano, etc.
+            //e uma barra (na vertical), que representa um valor
+            
+            const ctx = document.getElementById('meuGraficoDeBarras').getContext('2d');
+
+            const meuGraficoDeBarras = new Chart(ctx, {
+                type: 'bar', //tipo do gráfico = barras
+                data: {
+                   
+                    datasets: [{
+                        label: 'Quantidade de alunos por ano',
+                        data: [{x:'1º Ano', y:42}, {x:'2º Ano', y:36}, {x:'3º Ano', y:54}, {x:'4º Ano', y:39}],
+                        backgroundColor: [  //cor de fundo  
+                            'rgba(255, 99, 132, 0.2)', //vermelho claro 
+                            'rgba(54, 162, 235, 0.2)', //azul claro
+                            'rgba(255, 206, 86, 0.2)', //amarelo claro
+                            'rgba(75, 192, 192, 0.2)'  //verde claro
+                        ],
+                        borderColor: [  //cor de borda  
+                            'rgba(255, 99, 132, 1)', //vermelha   
+                            'rgba(54, 162, 235, 1)', //azul 
+                            'rgba(255, 206, 86, 1)', //amarela 
+                            'rgba(75, 192, 192, 1)'  //verde 
+                        ],
+                        borderWidth: 1  //espessura da borda
+                    }
+                ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            </script>
+
+    </body> 
+</html>

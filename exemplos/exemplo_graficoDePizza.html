@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Exemplo 1</title>
+
+    <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <h2>Exemplo 5: Gráfico de Pizza</h2> 
+    <h1>Quantidade de vendas de TVs na loja por funcionário</h1> 
+
+    <!--cria um elemento canvas onde entra o gráfico, 
+        com id=meuGraficoDePizza-->
+    <div>
+        <canvas id="meuGraficoDePizza"></canvas>
+    </div>
+    
+    <script>
+        
+        //vamos criar um gráfico de pizza
+        //cada fatia da pizza terá um rótulo (nome do funcionário)
+        //e um valor numérido (usado para calcular o tamanho da fatia da pizza)
+
+        const meusDados = {
+                labels: ['Paulo', 'Caroline', 'Marcos', 'Ana Paula'],
+                datasets: [{
+                    label: 'Meu primeiro gráfico de pizza',
+                    data: [120, 150, 35, 90],
+                    backgroundColor: [   //cor de fundo da fatia da pizza
+                    'rgb(255, 99, 132)',  //vermelho escuro
+                    'rgb(54, 162, 235)',  //azul escuro  
+                    'rgb(255, 205, 86)',  //amarelo escuro 
+                    'rgb(155, 205, 86)'   //verde claro
+                    ],
+                    hoverOffset: 4
+                }]
+                };
+      
+        //new Chart = cria um novo gráfico, 
+        //adicionado ao elemento canvas de id=meuGraficoDePizza
+        //e com os dados do objeto meusDados  
+        const myChart = new Chart(
+            document.getElementById('meuGraficoDePizza'),
+            {
+              type: 'pie',       //tipo = gráfico de pizza  
+              data: meusDados,   //dados do objeto meusDados 
+              options: {}
+            }
+        );
+        
+    </script>
+
+</body>
+</html>

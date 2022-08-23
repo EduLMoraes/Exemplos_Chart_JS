@@ -1,0 +1,99 @@
+<html> 
+    <head> 
+        <title>Exemplo 5</title>
+        <!--<script src="node_modules/chart.js/dist/chart.js"></script> -->
+
+        <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </head> 
+    <body> 
+        <h1>Exemplo 5 de Dashboard com <u>2 Gráficos</u></h1> 
+        
+        <!--cria um dashboard com 2 elementos canvas -->        
+        <canvas id="meuGraficoDeBarras" width="100" height="100"></canvas>
+        <br />
+        <br />
+        <canvas id="meuGraficoDeLinhas" width="100" height="100"></canvas>
+
+        
+        <script>
+
+            //vamos criar um gráfico de barras verticais
+            //cada barra terá um rótulo (na horizontal) que será: 1º ano, 2º ano, etc.
+            //e uma barra (na vertical), que representa um valor
+            
+            const ctx = document.getElementById('meuGraficoDeBarras').getContext('2d');
+
+            const meuGraficoDeBarras = new Chart(ctx, {
+                type: 'bar', //tipo do gráfico = barras
+                data: {
+                   
+                    datasets: [{
+                        label: 'Quantidade de alunos por ano',
+                        data: [{x:'1º Ano', y:42}, {x:'2º Ano', y:36}, {x:'3º Ano', y:54}, {x:'4º Ano', y:39}],
+                        backgroundColor: [  //cor de fundo  
+                            'rgba(255, 99, 132, 0.2)', //vermelho claro 
+                            'rgba(54, 162, 235, 0.2)', //azul claro
+                            'rgba(255, 206, 86, 0.2)', //amarelo claro
+                            'rgba(75, 192, 192, 0.2)'  //verde claro
+                        ],
+                        borderColor: [  //cor de borda  
+                            'rgba(255, 99, 132, 1)', //vermelha   
+                            'rgba(54, 162, 235, 1)', //azul 
+                            'rgba(255, 206, 86, 1)', //amarela 
+                            'rgba(75, 192, 192, 1)'  //verde 
+                        ],
+                        borderWidth: 1  //espessura da borda
+                    }
+                ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+                    
+                //agora vamos criar um gráfico de linhas
+                //cada linha terá um rótulo (na horizontal) que é o nome do mês (Jan, Fev, Mar,...)
+                //e o valor de um ponto (na vertical)
+                //o framework Chart liga os pontos através de linhas, fomando o gráfico
+
+                const meusDados = {
+                datasets: [
+                    
+                    //dados da linha
+                    {
+                        label: 'Quantidade vendas de TV por mês',             //título da linha
+                        backgroundColor: 'yellow',  //cor dos pontos
+                        borderColor: 'red',         //cor da borda dos pontos e da linha
+                        data: [{x:'Janeiro', y:0}, 
+                            {x:'Fevereiro', y:10}, 
+                            {x:'Março', y:8}, 
+                            {x:'Abril', y:2}, 
+                            {x:'Maio', y:20}, 
+                            {x:'Junho', y:30}]
+                    }
+                ]
+                };
+            
+                //new Chart = cria um novo gráfico, 
+                //adicionado ao elemento canvas de id=meuGrafico
+                //e com os dados do objeto meusDados  
+                const myChart = new Chart(
+                    document.getElementById('meuGraficoDeLinhas'),
+                    {
+                    type: 'line',      //tipo = gráfico de linhas  
+                    data: meusDados,   //dados do objeto meusDados 
+                    options: {}
+                    }
+                );
+                
+            </script>
+
+    </body> 
+</html>

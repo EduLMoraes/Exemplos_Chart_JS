@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Exercicio 1</title>
+
+    <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style type="text/css">
+        .graf1{
+            width: 500px;
+        }
+
+        .graf2{
+            width: 500px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h2>Exercicio 1: Gráfico de Linhas</h2> 
+    <h1>Preço do café nos ultimos 4 anos</h1> 
+
+    <!--cria um elemento canvas onde entra o gráfico, 
+        com id=meuGrafico-->
+    <div class="graf1">
+        <canvas id="meuGrafico"></canvas>
+    </div>
+    <h2>Exercicio 2: Gráfico de Linhas</h2> 
+    <h1>Preço do café por cidade nos ultimos 4 anos</h1> 
+    <div class="graf2">
+        <canvas id="meuGraficoDeBarras"></canvas>
+    </div>
+    
+    <script>
+        
+        
+        //vamos criar um gráfico de barras verticais
+        //cada barra terá um rótulo (na horizontal) que será: 1º ano, 2º ano, etc.
+        //e uma barra (na vertical), que representa um valor
+        
+        const ctx = document.getElementById('meuGraficoDeBarras').getContext('2d');
+
+        const meuGraficoDeBarras = new Chart(ctx, {
+            type: 'bar', //tipo do gráfico = barras
+            data: {
+               
+                datasets: [
+
+                {
+                    label: 'Bagé',
+                    data: [{x:'1º Ano', y:4.50}],
+                    backgroundColor: [  //cor de fundo  
+                        'rgba(54, 162, 235, 0.2)', //azul claro 
+                        'rgba(54, 162, 235, 0.2)', //azul claro
+                        'rgba(54, 162, 235, 0.2)', //azul claro
+                        'rgba(54, 162, 235, 0.2)'  //azul claro
+                    ],
+                    borderColor: [  //cor de borda  
+                        'rgba(154, 162, 235, 1)', //azul mais escuro   
+                        'rgba(154, 162, 235, 1)', //azul mais escuro  
+                        'rgba(154, 162, 235, 1)', //azul mais escuro  
+                        'rgba(154, 162, 235, 1)'  //azul mais escuro  
+                    ],
+                    borderWidth: 1  //espessura da borda
+                },
+                    
+                {
+                    label: 'Pelotas',
+                    data: [{x:'1º Ano', y:4.90}],
+                    backgroundColor: [  //cor de fundo  
+                        'pink' //vermelho claro
+                    ],
+                    borderColor: [  //cor de borda  
+                        'black'
+                    ],
+                    borderWidth: 1  //espessura da borda
+                },
+
+                {
+                    label: 'Porto Alegre',
+                    data: [{x:'1º Ano', y:3.90}],
+                    backgroundColor: [  //cor de fundo  
+                        'yellow'
+                    ],
+                    borderColor: [  //cor de borda  
+                        'red'
+                    ],
+                    borderWidth: 1  //espessura da borda
+                }
+            
+
+            
+            ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+                
+            }
+        });
+
+
+
+        //vamos criar um gráfico de linhas
+        //cada linha terá um rótulo (na horizontal) que é o nome do mês (Jan, Fev, Mar,...)
+        //e o valor de um ponto (na vertical)
+        //o framework Chart liga os pontos através de linhas, fomando o gráfico
+
+        const meusDados = {
+          datasets: [
+          
+          //dados da 1a linha
+          {
+            label: 'Café',             //título da linha
+            backgroundColor: 'yellow',  //cor dos pontos
+            borderColor: 'red',         //cor da borda dos pontos e da linha
+            data: [{x:'2019', y:2.50}, 
+                   {x:'2020', y:2.70}, 
+                   {x:'2021', y:2.85}, 
+                   {x:'2022', y:3.50}
+          ]
+          }
+        ]
+        };
+      
+        //new Chart = cria um novo gráfico, 
+        //adicionado ao elemento canvas de id=meuGrafico
+        //e com os dados do objeto meusDados  
+        const myChart = new Chart(
+            document.getElementById('meuGrafico'),
+            {
+              type: 'line',      //tipo = gráfico de linhas  
+              data: meusDados,   //dados do objeto meusDados 
+              options: {}
+            }
+        );
+        
+    </script>
+
+</body>
+</html>

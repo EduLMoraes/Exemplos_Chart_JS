@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Exemplo 1</title>
+
+    <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <h2>Exemplo 4: Gráfico de Linhas <u>com 1 linha</u></h2> 
+    <h1>Quantidade de vendas de TVs na loja</h1> 
+
+    <!--cria um elemento canvas onde entra o gráfico, 
+        com id=meuGrafico-->
+    <div>
+        <canvas id="meuGrafico"></canvas>
+    </div>
+    
+    <script>
+        
+        //vamos criar um gráfico de linhas
+        //cada linha terá um rótulo (na horizontal) que é o nome do mês (Jan, Fev, Mar,...)
+        //e o valor de um ponto (na vertical)
+        //o framework Chart liga os pontos através de linhas, fomando o gráfico
+
+        const meusDados = {
+          datasets: [
+
+            //dados da linha
+            {
+                label: 'Vendas do funcionário Paulo',             //título da linha
+                backgroundColor: 'yellow',  //cor dos pontos
+                borderColor: 'red',         //cor da borda dos pontos e da linha
+                data: [{x:'Janeiro', y:0}, 
+                    {x:'Fevereiro', y:10}, 
+                    {x:'Março', y:8}, 
+                    {x:'Abril', y:2}, 
+                    {x:'Maio', y:20}, 
+                    {x:'Junho', y:30}]
+            }
+        ]
+        };
+      
+        //new Chart = cria um novo gráfico, 
+        //adicionado ao elemento canvas de id=meuGrafico
+        //e com os dados do objeto meusDados  
+        const myChart = new Chart(
+            document.getElementById('meuGrafico'),
+            {
+              type: 'line',      //tipo = gráfico de linhas  
+              data: meusDados,   //dados do objeto meusDados 
+              options: {}
+            }
+        );
+        
+    </script>
+
+</body>
+</html>

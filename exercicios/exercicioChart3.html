@@ -1,0 +1,92 @@
+<html> 
+    <head> 
+        <title>Exercicio 3</title>
+        <!--<script src="node_modules/chart.js/dist/chart.js"></script> -->
+
+        <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    </head> 
+    <body> 
+        
+        <h2>Exercicio 2: gráfico barra simples</h2> 
+        <h1>Preço médio do leite por cidades</h1> 
+        
+        <!--cria um elemento canvas onde entra o gráfico, 
+            com id=meuGrafico-->        
+        <canvas id="meuGraficoDeBarras" width="100" height="100"></canvas>
+
+ 
+        
+        <script>
+
+            //vamos criar um gráfico de barras verticais
+            //cada barra terá um rótulo (na horizontal) que será: 1º ano, 2º ano, etc.
+            //e uma barra (na vertical), que representa um valor
+            
+            const ctx = document.getElementById('meuGraficoDeBarras').getContext('2d');
+
+            const meuGraficoDeBarras = new Chart(ctx, {
+                type: 'bar', //tipo do gráfico = barras
+                data: {
+                   
+                    datasets: [
+
+                    {
+                        label: 'Bagé',
+                        data: [{x:'1º Ano', y:4.50}],
+                        backgroundColor: [  //cor de fundo  
+                            'rgba(54, 162, 235, 0.2)', //azul claro 
+                            'rgba(54, 162, 235, 0.2)', //azul claro
+                            'rgba(54, 162, 235, 0.2)', //azul claro
+                            'rgba(54, 162, 235, 0.2)'  //azul claro
+                        ],
+                        borderColor: [  //cor de borda  
+                            'rgba(154, 162, 235, 1)', //azul mais escuro   
+                            'rgba(154, 162, 235, 1)', //azul mais escuro  
+                            'rgba(154, 162, 235, 1)', //azul mais escuro  
+                            'rgba(154, 162, 235, 1)'  //azul mais escuro  
+                        ],
+                        borderWidth: 1  //espessura da borda
+                    },
+                        
+                    {
+                        label: 'Pelotas',
+                        data: [{x:'1º Ano', y:4.90}],
+                        backgroundColor: [  //cor de fundo  
+                            'pink' //vermelho claro
+                        ],
+                        borderColor: [  //cor de borda  
+                            'black'
+                        ],
+                        borderWidth: 1  //espessura da borda
+                    },
+
+                    {
+                        label: 'Porto Alegre',
+                        data: [{x:'1º Ano', y:3.90}],
+                        backgroundColor: [  //cor de fundo  
+                            'yellow'
+                        ],
+                        borderColor: [  //cor de borda  
+                            'red'
+                        ],
+                        borderWidth: 1  //espessura da borda
+                    }
+                
+
+                
+                ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            </script>
+
+    </body> 
+</html>

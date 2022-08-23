@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Exercicio 5</title>
+
+    <!-- inclui neste script a biblioteca do ChartJS disponivel na web -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+    <h2>Exercicio 5: Gráfico de Pizza</h2> 
+    <h1>computadores por lab</h1> 
+
+    <!--cria um elemento canvas onde entra o gráfico, 
+        com id=meuGraficoDePizza-->
+    <div>
+        <canvas id="meuGraficoDePizza"></canvas>
+    </div>
+    
+    <script>
+        
+        //vamos criar um gráfico de pizza
+        //cada fatia da pizza terá um rótulo (nome do funcionário)
+        //e um valor numérido (usado para calcular o tamanho da fatia da pizza)
+
+        const meusDados = {
+                labels: ['110', '250', '280'],
+                datasets: [{
+                    label: 'Meu primeiro gráfico de pizza',
+                    data: [30, 20, 5],
+                    backgroundColor: [   //cor de fundo da fatia da pizza
+                    'blue',
+                    'red',
+                    'purple'  //verde claro
+                    ],
+                    hoverOffset: 4
+                }]
+                };
+      
+        //new Chart = cria um novo gráfico, 
+        //adicionado ao elemento canvas de id=meuGraficoDePizza
+        //e com os dados do objeto meusDados  
+        const myChart = new Chart(
+            document.getElementById('meuGraficoDePizza'),
+            {
+              type: 'pie',       //tipo = gráfico de pizza  
+              data: meusDados,   //dados do objeto meusDados 
+              options: {}
+            }
+        );
+        
+    </script>
+
+</body>
+</html>
